@@ -144,7 +144,7 @@ def the_fourth():
     f_gen = f_ru+f_en
     print(f_gen)
 
-    dic = ['йцукенгшщзхэждлорпавыфячсмитьбюё']
+    dic = 'йцукенгшщзхэждлорпавыфячсмитьбюё'
 
     for name in f_gen:
         for x in name.lower():
@@ -153,10 +153,16 @@ def the_fourth():
                 break
         else:
             foreign_artists.append(name)
-    print('Русские')
-    pprint(russian_artists)
-    print('Не русские')
-    pprint(foreign_artists)
+    
+    russian_artists = set(russian_artists)
+    foreign_artists = set(foreign_artists)
 
+    print(f'Количество российских исполнителей: {len(russian_artists)}')
+    print(f'Количество иностранных исполнителей: {len(foreign_artists)}')
+
+
+    open('russian_artists.txt', 'w', encoding='utf8').write('\n'.join(russian_artists))
+    open('foreign_artists.txt', 'w', encoding='utf8').write('\n'.join(foreign_artists))
+    
 
 the_fourth()
